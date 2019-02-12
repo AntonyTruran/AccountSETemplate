@@ -8,68 +8,81 @@ import org.junit.Test;
 
 import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.AccountMapRepository;
+import com.qa.util.JSONUtil;
 
 public class AccountServiceTest {
+	
+	AccountMapRepository repo;
+	private JSONUtil util;
 
 	@Before
 	public void setup() {
-	
-	}
-	
+		repo = new AccountMapRepository();
+		repo.createAccount("{\"Id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
+		repo.createAccount("{\"Id\": 2, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123456\"}");
+		}
+
 	@Test
 	public void addAccountTest() {
-		fail("TODO");	
+		repo.createAccount("{\"Id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
+		assertNotNull(repo.getAccountMap().get(1L));
 	}
-	
+
 	@Test
 	public void add2AccountsTest() {
-		fail("TODO");	
+		repo.createAccount("{\"Id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
+		repo.createAccount("{\"Id\": 2, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123456\"}");
+		assertNotNull(repo.getAccountMap().get(2L));
 	}
 
 	@Test
 	public void removeAccountTest() {
-		fail("TODO");	
+		repo.deleteAccount(1L);
+		assertNull(repo.getAccountMap().get(1L));
 	}
-	
+
 	@Test
 	public void remove2AccountsTest() {
-		fail("TODO");	
+		repo.deleteAccount(1L);
+		repo.deleteAccount(2L);
+		assertNull(repo.getAccountMap().get(2L));
 	}
-	
+
 	@Test
 	public void remove2AccountTestAnd1ThatDoesntExist() {
-		fail("TODO");	
+		repo.deleteAccount(1L);
+		repo.deleteAccount(2L);
+		assertEquals("{\"message\": \"no such account\"}",repo.deleteAccount(2L));
 	}
-	
+
 	@Test
 	public void jsonStringToAccountConversionTest() {
 		// testing JSONUtil
-		fail("TODO");	
+		fail("TODO");
 	}
-
 
 	@Test
 	public void accountConversionToJSONTest() {
-		//testing JSONUtil
-		fail("TODO");	
+		// testing JSONUtil
+		fail("TODO");
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		//For a later piece of functionality
-		fail("TODO");	
+		// For a later piece of functionality
+		fail("TODO");
 	}
-	
+
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		//For a later piece of functionality
-		fail("TODO");	
+		// For a later piece of functionality
+		fail("TODO");
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
-		//For a later piece of functionality
-		fail("TODO");	
+		// For a later piece of functionality
+		fail("TODO");
 	}
 
 }
