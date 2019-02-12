@@ -9,7 +9,7 @@ import com.qa.util.JSONUtilJack;
 public class AccountMapRepositoryJack implements AccountRepository {
 
 	Map<Long, Account> accountMap = new HashMap<Long, Account>();
-
+ 
 	public Map<Long, Account> getAccountMap() {
 		return accountMap;
 	}
