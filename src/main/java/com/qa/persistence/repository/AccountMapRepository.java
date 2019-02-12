@@ -1,7 +1,6 @@
 package com.qa.persistence.repository;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import com.qa.persistence.domain.Account;
