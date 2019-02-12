@@ -2,6 +2,7 @@ package com.qa.persistence.repository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtilJack;
@@ -46,5 +47,8 @@ public class AccountMapRepositoryJack implements AccountRepository {
 		}
 		return "{\"message\": \"no such account\"}";
 	}
-
+	
+	public int countByName(String name) {
+		return accountMap.values().stream().filter(n -> n.getFirstName().equals(name)).collect(Collectors.toList()).size();
+	}
 }

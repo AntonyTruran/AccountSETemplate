@@ -2,7 +2,6 @@ package com.qa.MapTests;
 
 import static org.junit.Assert.*;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,13 +16,18 @@ public class AccountServiceTest {
 
 	@Before
 	public void setup() {
+		util = new JSONUtil();
 		repo = new AccountMapRepository();
 		repo.createAccount(
 				"{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
 		repo.createAccount(
 				"{\"id\": 2, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123456\"}");
+		repo.createAccount(
+				"{\"id\": 3, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123411\"}");
+		repo.createAccount(
+				"{\"id\": 4, \"firstName\": \"Sam\", \"lastName\": \"Fisher\", \"accountNumber\": \"347432\"}");
 	}
-
+	
 	@Test
 	public void addAccountTest() {
 		assertNotNull(repo.getAccountMap().get(1L));
@@ -56,32 +60,27 @@ public class AccountServiceTest {
 
 	@Test
 	public void jsonStringToAccountConversionTest() {
-		// testing JSONUtil
-		fail("TODO");
+		assertEquals(util.getObjectForJSON("{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}", Account.class).getAccountNumber(), repo.getAccountMap().get(1L).getAccountNumber());
 	}
 
 	@Test
 	public void accountConversionToJSONTest() {
-		// testing JSONUtil
-		fail("TODO");
+		assertEquals(util.getJSONForObject(repo.getAccountMap().get(1L)), "{\"id\":1,\"firstName\":\"Phil\",\"lastName\":\"Jerry\",\"accountNumber\":\"102836\"}");
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(repo.countByName("John"), 0);
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(repo.countByName("Phil"), 1);
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(repo.countByName("Ella"), 2);
 	}
 
 }
