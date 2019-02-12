@@ -56,32 +56,38 @@ public class AccountServiceTest {
 
 	@Test
 	public void jsonStringToAccountConversionTest() {
-		// testing JSONUtil
-		fail("TODO");
+		
 	}
 
 	@Test
 	public void accountConversionToJSONTest() {
-		// testing JSONUtil
-		fail("TODO");
+		
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		// For a later piece of functionality
-		fail("TODO");
+		repo = new AccountMapRepository();
+		repo.createAccount(
+				"{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
+		assertEquals(0, repo.countAccountsWithFirstName("Gaz"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		// For a later piece of functionality
-		fail("TODO");
+		repo = new AccountMapRepository();
+		repo.createAccount(
+				"{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
+		assertEquals(1, repo.countAccountsWithFirstName("Phil"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
-		// For a later piece of functionality
-		fail("TODO");
+		repo = new AccountMapRepository();
+		repo.createAccount(
+				"{\"id\": 1, \"firstName\": \"Dave\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
+		repo.createAccount(
+				"{\"id\": 2, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
+		assertEquals(1, repo.countAccountsWithFirstName("Dave"));
 	}
 
 }
