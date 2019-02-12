@@ -77,7 +77,7 @@ public class AccountServiceTest {
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
 		
-		assertEquals(1, repo.cycleAccount("Ella"));
+		assertEquals(1, repo.cycleAccount("Ellas"));
 		}
 	
 
