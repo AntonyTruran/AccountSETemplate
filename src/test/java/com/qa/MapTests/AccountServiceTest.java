@@ -68,20 +68,19 @@ public class AccountServiceTest {
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(0,repo.countAccounts("Bart"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(1,repo.countAccounts("Phil"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
-		// For a later piece of functionality
-		fail("TODO");
+		repo.createAccount(
+				"{\"id\": 3, \"firstName\": \"Ella\", \"lastName\": \"Jask\", \"accountNumber\": \"564132\"}");
+		assertEquals(2,repo.countAccounts("Ella"));
 	}
 
 }

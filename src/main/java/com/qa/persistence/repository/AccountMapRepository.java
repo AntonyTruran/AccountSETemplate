@@ -2,6 +2,7 @@ package com.qa.persistence.repository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
@@ -47,4 +48,14 @@ public class AccountMapRepository implements AccountRepository {
 		return "{\"message\": \"no such account\"}";
 	}
 
+	public int countAccounts(String firstName) {
+		int count = 0;
+		for (Long accountReference = 1L; accountReference <= accountMap.size(); accountReference ++) {
+			Account currentAccount = accountMap.get(accountReference);
+			if (currentAccount.getFirstName().equalsIgnoreCase(firstName)){
+				count ++;
+			}
+		}
+		return count;
+	}
 }
