@@ -2,13 +2,13 @@ package com.qa.persistence.domain;
 
 public class Account {
 
-	private Long Id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String accountNumber;
 
 	public Account(Long id, String firstName, String lastName, String accountNumber) {
-		Id = id;
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.accountNumber = accountNumber;
@@ -18,11 +18,11 @@ public class Account {
 	}
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getFirstName() {

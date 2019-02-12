@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.qa.persistence.domain.Account;
-import com.qa.util.JSONUtil;
+import com.qa.util.JSONUtilJack;
 
-public class AccountMapRepository implements AccountRepository {
+public class AccountMapRepositoryJack implements AccountRepository {
 
 	Map<Long, Account> accountMap = new HashMap<Long, Account>();
 
@@ -18,14 +18,14 @@ public class AccountMapRepository implements AccountRepository {
 		this.accountMap = accountMap;
 	}
 
-	private JSONUtil util = new JSONUtil();
+	private JSONUtilJack util = new JSONUtilJack();
 
 	public String getAllAccounts() {
-		return util.getJSONForObject(accountMap.values());
+		return util.getJSONJackForObject(accountMap.values());
 	}
 
 	public String createAccount(String account) {
-		Account anAccount = util.getObjectForJSON(account, Account.class);
+		Account anAccount = util.getObjectForJSONJack(account, Account.class);
 		accountMap.put(anAccount.getId(), anAccount);
 		return "{\"message\": \"account has been sucessfully added\"}";
 	}
@@ -39,7 +39,7 @@ public class AccountMapRepository implements AccountRepository {
 	}
 
 	public String updateAccount(Long id, String account) {
-		Account anAccount = util.getObjectForJSON(account, Account.class);
+		Account anAccount = util.getObjectForJSONJack(account, Account.class);
 		if (accountMap.get(id) != null) {
 			accountMap.put(id, anAccount);
 			return "{\"message\": \"account has been sucessfully updated\"}";
