@@ -3,86 +3,85 @@ package com.qa.MapTests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.AccountMapRepositoryJack;
 import com.qa.util.JSONUtilJack;
 
 public class AccountServiceTestJack {
 
-	AccountMapRepositoryJack repo;
-	private JSONUtilJack util;
+	AccountMapRepositoryJack repoJack;
+	private JSONUtilJack utilJack;
 
 	@Before
 	public void setup() {
-		repo = new AccountMapRepositoryJack();
-		repo.createAccount(
+		utilJack = new JSONUtilJack();
+		repoJack = new AccountMapRepositoryJack();
+		repoJack.createAccount(
 				"{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
-		repo.createAccount(
+		repoJack.createAccount(
 				"{\"id\": 2, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123456\"}");
+		repoJack.createAccount(
+				"{\"id\": 3, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123411\"}");
+		repoJack.createAccount(
+				"{\"id\": 4, \"firstName\": \"Sam\", \"lastName\": \"Fisher\", \"accountNumber\": \"347432\"}");
 	}
 
 	@Test
 	public void addAccountTest() {
-		assertNotNull(repo.getAccountMap().get(1L));
+		assertNotNull(repoJack.getAccountMap().get(1L));
 	}
 
 	@Test
 	public void add2AccountsTest() {
-		assertNotNull(repo.getAccountMap().get(2L));
+		assertNotNull(repoJack.getAccountMap().get(2L));
 	}
 
 	@Test
 	public void removeAccountTest() {
-		repo.deleteAccount(1L);
-		assertNull(repo.getAccountMap().get(1L));
+		repoJack.deleteAccount(1L);
+		assertNull(repoJack.getAccountMap().get(1L));
 	}
 
 	@Test
 	public void remove2AccountsTest() {
-		repo.deleteAccount(1L);
-		repo.deleteAccount(2L);
-		assertNull(repo.getAccountMap().get(2L));
+		repoJack.deleteAccount(1L);
+		repoJack.deleteAccount(2L);
+		assertNull(repoJack.getAccountMap().get(2L));
 	}
 
 	@Test
 	public void remove2AccountTestAnd1ThatDoesntExist() {
-		repo.deleteAccount(1L);
-		repo.deleteAccount(2L);
-		assertEquals("{\"message\": \"no such account\"}", repo.deleteAccount(2L));
+		repoJack.deleteAccount(1L);
+		repoJack.deleteAccount(2L);
+		assertEquals("{\"message\": \"no such account\"}", repoJack.deleteAccount(2L));
 	}
 
 	@Test
 	public void jsonStringToAccountConversionTest() {
-		// testing JSONUtil
-		fail("TODO");
+		assertEquals(utilJack.getObjectForJSONJack("{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}", Account.class).getAccountNumber(), repoJack.getAccountMap().get(1L).getAccountNumber());
 	}
 
 	@Test
 	public void accountConversionToJSONTest() {
-		// testing JSONUtil
-		fail("TODO");
+		assertEquals(utilJack.getJSONJackForObject(repoJack.getAccountMap().get(1L)), "{\"id\":1,\"firstName\":\"Phil\",\"lastName\":\"Jerry\",\"accountNumber\":\"102836\"}");
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(repoJack.countByName("John"), 0);
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(repoJack.countByName("Phil"), 1);
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(repoJack.countByName("Ella"), 2);
 	}
-
 }
