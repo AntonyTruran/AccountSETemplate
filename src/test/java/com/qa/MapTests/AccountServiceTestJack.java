@@ -26,7 +26,7 @@ public class AccountServiceTestJack {
 	}
 
 	@Test
-	public void addAccountTest() {
+	public void addAccountTest() { 
 		assertNotNull(repo.getAccountMap().get(1L));
 	}
 

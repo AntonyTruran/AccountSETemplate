@@ -23,7 +23,7 @@ private static final Logger logger = Logger.getLogger(JSONUtilJack.class);
 			return jack.writeValueAsString(obj);
 		} catch (JsonProcessingException e) {
 			logger.error(e);
-		}
+		} 
 		return null;
 	}
 
@@ -31,9 +31,7 @@ private static final Logger logger = Logger.getLogger(JSONUtilJack.class);
 
 		try {
 			return jack.readValue(jsonString, clazz);
-		} catch (JsonParseException e) {
-			logger.error(e);
-		} catch (JsonMappingException e) {
+		} catch (JsonParseException | JsonMappingException e){
 			logger.error(e);
 		} catch (IOException e) {
 			logger.error(e);
