@@ -1,6 +1,7 @@
 package com.qa.persistence.repository;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import com.qa.persistence.domain.Account;
@@ -46,5 +47,10 @@ public class AccountMapRepository implements AccountRepository {
 		}
 		return "{\"message\": \"no such account\"}";
 	}
-
+int count;
+	public Object countAccountsWithFirstName(String string) {
+		count = 0;
+		accountMap.forEach((key,value) -> {if(value.getFirstName().equals(string)) {count++;}});
+		return count;
+	}
 }
