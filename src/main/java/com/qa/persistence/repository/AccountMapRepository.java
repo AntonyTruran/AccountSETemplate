@@ -9,11 +9,13 @@ import com.qa.util.JSONUtil;
 public class AccountMapRepository implements AccountRepository {
 
 	Map<Long, Account> accountMap = new HashMap<Long, Account>();
-
+	
+	
+	
 	public Map<Long, Account> getAccountMap() {
 		return accountMap;
 	}
-
+ 
 	public void setAccountMap(Map<Long, Account> accountMap) {
 		this.accountMap = accountMap;
 	}
@@ -45,6 +47,16 @@ public class AccountMapRepository implements AccountRepository {
 			return "{\"message\": \"account has been sucessfully updated\"}";
 		}
 		return "{\"message\": \"no such account\"}";
+	}
+
+	public int cycleAccount(String stringName) {
+		int count =0;
+		for (long i = 1; i <= accountMap.size(); i++) {
+			if (accountMap.get(i).getFirstName().equalsIgnoreCase(stringName)){	
+			count++;
+			}
+		}
+		return count;
 	}
 
 }
