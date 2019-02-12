@@ -1,7 +1,10 @@
 package com.qa.persistence.repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
@@ -9,7 +12,7 @@ import com.qa.util.JSONUtil;
 public class AccountMapRepository implements AccountRepository {
 
 	Map<Long, Account> accountMap = new HashMap<Long, Account>();
-	
+	List<Account> accountMaps = new ArrayList<Account>();
 	
 	
 	public Map<Long, Account> getAccountMap() {
@@ -50,13 +53,8 @@ public class AccountMapRepository implements AccountRepository {
 	}
 
 	public int cycleAccount(String stringName) {
-		int count =0;
-		for (long i = 1; i <= accountMap.size(); i++) {
-			if (accountMap.get(i).getFirstName().equalsIgnoreCase(stringName)){	
-			count++;
-			}
-		}
-		return count;
+		accountMaps = accountMap.values().stream().filter(n -> n.getFirstName().equals(stringName)).collect(Collectors.toList());
+		return accountMaps.size();
 	}
 
 }
