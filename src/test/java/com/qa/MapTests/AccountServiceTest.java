@@ -2,7 +2,6 @@ package com.qa.MapTests;
 
 import static org.junit.Assert.*;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,12 +16,15 @@ public class AccountServiceTest {
 
 	@Before
 	public void setup() {
+		util = new JSONUtil();
 		repo = new AccountMapRepository();
+
 		repo.createAccount("{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
 		repo.createAccount("{\"id\": 2, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123456\"}");
 		repo.createAccount("{\"id\": 3, \"firstName\": \"Phil\", \"lastName\": \"Bob\", \"accountNumber\": \"134567\"}");
 	}
 
+	
 	@Test
 	public void addAccountTest() {
 		assertNotNull(repo.getAccountMap().get(1L)); 
@@ -53,6 +55,7 @@ public class AccountServiceTest {
 		assertEquals("{\"message\": \"no such account\"}", repo.deleteAccount(2L));
 	}
 
+
 //	@Test
 //	public void jsonStringToAccountConversionTest() {
 //		// testing JSONUtil
@@ -65,6 +68,7 @@ public class AccountServiceTest {
 //		fail("TODO");
 //	}
 
+
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
 		assertEquals(0, repo.cycleAccounts("John"));
@@ -73,11 +77,13 @@ public class AccountServiceTest {
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
 		assertEquals(1, repo.cycleAccounts("Ella"));
+
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
 		assertEquals(2, repo.cycleAccounts("Phil"));
+
 	}
 
 }
