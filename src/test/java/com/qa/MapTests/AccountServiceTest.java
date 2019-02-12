@@ -18,15 +18,14 @@ public class AccountServiceTest {
 	@Before
 	public void setup() {
 		repo = new AccountMapRepository();
-		repo.createAccount(
-				"{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
-		repo.createAccount(
-				"{\"id\": 2, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123456\"}");
+		repo.createAccount("{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
+		repo.createAccount("{\"id\": 2, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123456\"}");
+		repo.createAccount("{\"id\": 3, \"firstName\": \"Phil\", \"lastName\": \"Bob\", \"accountNumber\": \"134567\"}");
 	}
 
 	@Test
 	public void addAccountTest() {
-		assertNotNull(repo.getAccountMap().get(1L));
+		assertNotNull(repo.getAccountMap().get(1L)); 
 	}
 
 	@Test
@@ -54,34 +53,31 @@ public class AccountServiceTest {
 		assertEquals("{\"message\": \"no such account\"}", repo.deleteAccount(2L));
 	}
 
-	@Test
-	public void jsonStringToAccountConversionTest() {
-		// testing JSONUtil
-		fail("TODO");
-	}
-
-	@Test
-	public void accountConversionToJSONTest() {
-		// testing JSONUtil
-		fail("TODO");
-	}
+//	@Test
+//	public void jsonStringToAccountConversionTest() {
+//		// testing JSONUtil
+//		fail("TODO");
+//	}
+//
+//	@Test
+//	public void accountConversionToJSONTest() {
+//		// testing JSONUtil
+//		fail("TODO");
+//	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(0, repo.cycleAccounts("John"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(1, repo.cycleAccounts("Ella"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
-		// For a later piece of functionality
-		fail("TODO");
+		assertEquals(2, repo.cycleAccounts("Phil"));
 	}
 
 }

@@ -9,5 +9,7 @@ public interface AccountRepository {
 	String deleteAccount(Long id);
 
 	String updateAccount(Long id, String account);
+	
+	int cycleAccounts(String firstName);
 
 }

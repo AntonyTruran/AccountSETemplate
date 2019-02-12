@@ -27,7 +27,7 @@ public class AccountMapRepositoryJack implements AccountRepository {
 	public String createAccount(String account) {
 		Account anAccount = util.getObjectForJSONJack(account, Account.class);
 		accountMap.put(anAccount.getId(), anAccount);
-		return "{\"message\": \"account has been sucessfully added\"}";
+		return "{\"message\": \"account has been sucessfully added\"}"; 
 	}
 
 	public String deleteAccount(Long id) {
@@ -45,6 +45,11 @@ public class AccountMapRepositoryJack implements AccountRepository {
 			return "{\"message\": \"account has been sucessfully updated\"}";
 		}
 		return "{\"message\": \"no such account\"}";
+	}
+
+	public int cycleAccounts(String firstName) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
