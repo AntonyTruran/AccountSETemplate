@@ -2,6 +2,8 @@ package com.qa.util;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JSONUtilJack {
 
 	private ObjectMapper jack;
-
+private static final Logger logger = Logger.getLogger(JSONUtilJack.class);
+	
 	public JSONUtilJack() {
 		this.jack = new ObjectMapper();
 	}
@@ -19,8 +22,7 @@ public class JSONUtilJack {
 		try {
 			return jack.writeValueAsString(obj);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e);
 		}
 		return null;
 	}
@@ -30,14 +32,11 @@ public class JSONUtilJack {
 		try {
 			return jack.readValue(jsonString, clazz);
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e);
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e);
 		}
 		return null;
 	}
