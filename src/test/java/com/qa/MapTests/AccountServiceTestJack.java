@@ -1,23 +1,24 @@
 package com.qa.MapTests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.qa.persistence.domain.Account;
-import com.qa.persistence.repository.AccountMapRepository;
-import com.qa.util.JSONUtil;
+import com.qa.persistence.repository.AccountMapRepositoryJack;
+import com.qa.util.JSONUtilJack;
 
-public class AccountServiceTest {
+public class AccountServiceTestJack {
 
-	AccountMapRepository repo;
-	private JSONUtil util;
+	AccountMapRepositoryJack repo;
+	private JSONUtilJack util;
 
 	@Before
 	public void setup() {
-		repo = new AccountMapRepository();
+		repo = new AccountMapRepositoryJack();
 		repo.createAccount(
 				"{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
 		repo.createAccount(
