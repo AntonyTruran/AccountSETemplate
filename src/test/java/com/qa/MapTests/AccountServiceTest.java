@@ -69,7 +69,7 @@ public class AccountServiceTest {
 		repo = new AccountMapRepository();
 		repo.createAccount(
 				"{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
-		assertEquals(0, repo.countAccountsWithFirstName("Gaz"));
+		assertEquals("0", repo.countAccountsWithFirstName("Gaz"));
 	}
 
 	@Test
@@ -77,7 +77,7 @@ public class AccountServiceTest {
 		repo = new AccountMapRepository();
 		repo.createAccount(
 				"{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
-		assertEquals(1, repo.countAccountsWithFirstName("Phil"));
+		assertEquals("1", repo.countAccountsWithFirstName("Phil"));
 	}
 
 	@Test
@@ -87,7 +87,7 @@ public class AccountServiceTest {
 				"{\"id\": 1, \"firstName\": \"Dave\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
 		repo.createAccount(
 				"{\"id\": 2, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
-		assertEquals(1, repo.countAccountsWithFirstName("Dave"));
+		assertEquals("1", repo.countAccountsWithFirstName("Dave"));
 	}
 
 }
