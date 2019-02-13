@@ -14,8 +14,8 @@ public class AccountMapRepository implements AccountRepository {
 	public Map<Long, Account> getAccountMap() {
 		return accountMap;
 	}
-
-	public void setAccountMap(Map<Long, Account> accountMap) {
+ 
+	public void setAccountMap(Map<Long, Account> accountMap) { 
 		this.accountMap = accountMap;
 	}
 

@@ -36,7 +36,7 @@ private static final Logger logger = Logger.getLogger(JSONUtilJack.class);
 		} catch (JsonMappingException e) {
 			logger.error(e);
 		} catch (IOException e) {
-			logger.error(e);
+			logger.error(e); 
 		}
 		return null;
 	}

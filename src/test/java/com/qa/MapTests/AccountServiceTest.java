@@ -42,7 +42,7 @@ public class AccountServiceTest {
 	public void removeAccountTest() {
 		repo.deleteAccount(1L);
 		assertNull(repo.getAccountMap().get(1L));
-	}
+	}  
 
 	@Test
 	public void remove2AccountsTest() {
