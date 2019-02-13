@@ -47,9 +47,9 @@ public class AccountMapRepository implements AccountRepository {
 		return "{\"message\": \"no such account\"}";
 	}
 int count;
-	public Object countAccountsWithFirstName(String string) {
+	public String countAccountsWithFirstName(String string) {
 		count = 0;
 		accountMap.forEach((key,value) -> {if(value.getFirstName().equals(string)) {count++;}});
-		return count;
+		return Integer.toString(count);
 	}
 }
