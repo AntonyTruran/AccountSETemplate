@@ -10,9 +10,9 @@ import javax.persistence.Id;
 public class Account {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(length = 50, name = "first_name")
+	@Column(length = 50)
 	private String firstName;
 	@Column(length = 50)
 	private String lastName;

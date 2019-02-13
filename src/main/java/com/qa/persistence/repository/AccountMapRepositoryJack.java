@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.enterprise.inject.Alternative;
+
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtilJack;
 
+@Alternative
 public class AccountMapRepositoryJack implements AccountRepository {
 
 	Map<Long, Account> accountMap = new HashMap<Long, Account>();
@@ -50,5 +53,13 @@ public class AccountMapRepositoryJack implements AccountRepository {
 	
 	public int countByName(String name) {
 		return accountMap.values().stream().filter(n -> n.getFirstName().equals(name)).collect(Collectors.toList()).size();
+	}
+
+	public String getNAccountsAlphabetical(int num) {
+		return null;
+	}
+
+	public String getAnAccount(Long id) {
+		return null;
 	}
 }
