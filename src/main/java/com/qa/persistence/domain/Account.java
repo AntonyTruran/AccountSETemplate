@@ -1,12 +1,23 @@
 package com.qa.persistence.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Account {
 
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@Column (length = 50)
 	private String firstName;
+	@Column (length = 50)
 	private String lastName;
+	@Column (length = 50)
 	private String accountNumber;
-
+	
 	public Account(Long id, String firstName, String lastName, String accountNumber) {
 		this.id = id;
 		this.firstName = firstName; 
@@ -17,7 +28,7 @@ public class Account {
 	public Account() {
 	}
 
-	public Long getId() {
+	public Long getId(String accountNumber) {
 		return id;
 	}
 

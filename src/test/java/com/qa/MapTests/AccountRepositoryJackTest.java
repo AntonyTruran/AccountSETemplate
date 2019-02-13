@@ -1,32 +1,32 @@
 package com.qa.MapTests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-import com.qa.persistence.repository.AccountMapRepository;
-import com.qa.util.JSONUtil;
+import com.qa.persistence.repository.AccountMapRepositoryJack;
+import com.qa.util.JSONUtilJack;
 
+public class AccountRepositoryJackTest {
 
-public class AccountServiceTest {
-
-	AccountMapRepository repo;
-	private JSONUtil util;
+	AccountMapRepositoryJack repo;
+	private JSONUtilJack util;
 
 	@Before
 	public void setup() {
-		repo = new AccountMapRepository();
-		repo.createAccount("{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
-		repo.createAccount("{\"id\": 2, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123456\"}");
-		repo.createAccount("{\"id\": 3, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102776\"}");
-		repo.createAccount("{\"id\": 4, \"firstName\": \"Ellas\", \"lastName\": \"Jerry\", \"accountNumber\": \"123876\"}");
-
+		repo = new AccountMapRepositoryJack();
+		repo.createAccount(
+				"{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}");
+		repo.createAccount(
+				"{\"id\": 2, \"firstName\": \"Ella\", \"lastName\": \"Jerry\", \"accountNumber\": \"123456\"}");
 	}
- 
+
 	@Test
-	public void addAccountTest() {
+	public void addAccountTest() { 
 		assertNotNull(repo.getAccountMap().get(1L));
 	}
 
@@ -55,35 +55,34 @@ public class AccountServiceTest {
 		assertEquals("{\"message\": \"no such account\"}", repo.deleteAccount(2L));
 	}
 
-	@Ignore
 	@Test
 	public void jsonStringToAccountConversionTest() {
 		// testing JSONUtil
 		fail("TODO");
 	}
 
-	@Ignore
 	@Test
 	public void accountConversionToJSONTest() {
-		// testing JSONUtil
-		fail("TODO");
+		assertEquals("{\"id\": 4, \"firstName\": \"Ellas\", \"lastName\": \"Jerry\", \"accountNumber\": \"123876\"}",
+				util.getJSONJackForObject(repo.getAccountMap().get(4L)));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		assertEquals(0, repo.cycleAccount("Eric"));
+		// For a later piece of functionality
+		fail("TODO");
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		
-		assertEquals(1, repo.cycleAccount("Ellas"));
-		}
-	
+		// For a later piece of functionality
+		fail("TODO");
+	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
-		assertEquals(2, repo.cycleAccount("Phil"));
-		}
+		// For a later piece of functionality
+		fail("TODO");
+	}
 
 }

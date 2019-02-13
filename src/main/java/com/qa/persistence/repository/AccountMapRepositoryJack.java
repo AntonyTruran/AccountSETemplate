@@ -24,11 +24,11 @@ public class AccountMapRepositoryJack implements AccountRepository {
 		return util.getJSONJackForObject(accountMap.values());
 	}
 
-	public String createAccount(String account) {
-		Account anAccount = util.getObjectForJSONJack(account, Account.class);
-		accountMap.put(anAccount.getId(), anAccount);
-		return "{\"message\": \"account has been sucessfully added\"}";
-	}
+//	public String createAccount(String account) {
+//		Account anAccount = util.getObjectForJSONJack(account, Account.class);
+//		accountMap.put(anAccount.getId(), anAccount);
+//		return "{\"message\": \"account has been sucessfully added\"}";
+//	}
 
 	public String deleteAccount(Long id) {
 		if (accountMap.get(id) != null) {
@@ -45,6 +45,30 @@ public class AccountMapRepositoryJack implements AccountRepository {
 			return "{\"message\": \"account has been sucessfully updated\"}";
 		}
 		return "{\"message\": \"no such account\"}";
+	}
+
+	@Override
+	public String createAccount(String account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteAccount(String accountNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updateAccount(String accountNumber, Account account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Account findAnAccount(String accountNumber) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
