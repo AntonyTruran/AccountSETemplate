@@ -1,14 +1,25 @@
 package com.qa.persistence.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Account {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Column(length = 50, name = "first_name")
 	private String firstName;
+	@Column(length = 50)
 	private String lastName;
+	@Column(length = 6)
 	private String accountNumber;
 
-	public Account(Long id, String firstName, String lastName, String accountNumber) {
-		this.id = id;
+	public Account(String firstName, String lastName, String accountNumber) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.accountNumber = accountNumber;
