@@ -61,27 +61,33 @@ public class AccountServiceTestJack {
 	}
 
 	@Test
+	public void accountUpdateTest() {
+		repoJack.updateAccount(1L, "{\"firstName\": \"Josh\"}");
+		assertEquals("Josh", repoJack.getAccountMap().get(1L).getFirstName());
+	}
+	
+	@Test
 	public void jsonStringToAccountConversionTest() {
-		assertEquals(utilJack.getObjectForJSONJack("{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}", Account.class).getAccountNumber(), repoJack.getAccountMap().get(1L).getAccountNumber());
+		assertEquals(repoJack.getAccountMap().get(1L).getAccountNumber(), utilJack.getObjectForJSONJack("{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}", Account.class).getAccountNumber());
 	}
 
 	@Test
 	public void accountConversionToJSONTest() {
-		assertEquals(utilJack.getJSONJackForObject(repoJack.getAccountMap().get(1L)), "{\"id\":1,\"firstName\":\"Phil\",\"lastName\":\"Jerry\",\"accountNumber\":\"102836\"}");
+		assertEquals("{\"id\":1,\"firstName\":\"Phil\",\"lastName\":\"Jerry\",\"accountNumber\":\"102836\"}", utilJack.getJSONJackForObject(repoJack.getAccountMap().get(1L)));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		assertEquals(repoJack.countByName("John"), 0);
+		assertEquals(0, repoJack.countByName("John"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		assertEquals(repoJack.countByName("Phil"), 1);
+		assertEquals(1, repoJack.countByName("Phil"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
-		assertEquals(repoJack.countByName("Ella"), 2);
+		assertEquals(2, repoJack.countByName("Ella"));
 	}
 }
