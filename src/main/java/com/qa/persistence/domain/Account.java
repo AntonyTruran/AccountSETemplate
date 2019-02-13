@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 public class Account {
@@ -15,6 +16,7 @@ public class Account {
 	private String firstName;
 	@Column (length = 50)
 	private String lastName;
+//	@UniqueConstraint
 	@Column (length = 50)
 	private String accountNumber;
 	
@@ -28,13 +30,13 @@ public class Account {
 	public Account() {
 	}
 
-	public Long getId(String accountNumber) {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 
 	public String getFirstName() {
 		return firstName;
