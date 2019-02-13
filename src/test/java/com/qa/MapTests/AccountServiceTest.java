@@ -27,7 +27,7 @@ public class AccountServiceTest {
 		repo.createAccount(
 				"{\"id\": 4, \"firstName\": \"Sam\", \"lastName\": \"Fisher\", \"accountNumber\": \"347432\"}");
 	}
-	
+
 	@Test
 	public void addAccountTest() {
 		assertNotNull(repo.getAccountMap().get(1L));
@@ -59,28 +59,38 @@ public class AccountServiceTest {
 	}
 
 	@Test
+	public void accountUpdateTest() {
+		repo.updateAccount(1L, "{\"firstName\": \"Josh\"}");
+		assertEquals("Josh", repo.getAccountMap().get(1L).getFirstName());
+	}
+
+	@Test
 	public void jsonStringToAccountConversionTest() {
-		assertEquals(util.getObjectForJSON("{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}", Account.class).getAccountNumber(), repo.getAccountMap().get(1L).getAccountNumber());
+		assertEquals(repo.getAccountMap().get(1L).getAccountNumber(),
+				util.getObjectForJSON(
+						"{\"id\": 1, \"firstName\": \"Phil\", \"lastName\": \"Jerry\", \"accountNumber\": \"102836\"}",
+						Account.class).getAccountNumber());
 	}
 
 	@Test
 	public void accountConversionToJSONTest() {
-		assertEquals(util.getJSONForObject(repo.getAccountMap().get(1L)), "{\"id\":1,\"firstName\":\"Phil\",\"lastName\":\"Jerry\",\"accountNumber\":\"102836\"}");
+		assertEquals("{\"id\":1,\"firstName\":\"Phil\",\"lastName\":\"Jerry\",\"accountNumber\":\"102836\"}",
+				util.getJSONForObject(repo.getAccountMap().get(1L)));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		assertEquals(repo.countByName("John"), 0);
+		assertEquals(0, repo.countByName("John"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		assertEquals(repo.countByName("Phil"), 1);
+		assertEquals(1, repo.countByName("Phil"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenTwo() {
-		assertEquals(repo.countByName("Ella"), 2);
+		assertEquals(2, repo.countByName("Ella"));
 	}
 
 }
