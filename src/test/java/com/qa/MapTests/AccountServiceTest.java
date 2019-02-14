@@ -4,16 +4,19 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.AccountMapRepository;
 import com.qa.util.JSONUtil;
 
+
 public class AccountServiceTest {
 
 	AccountMapRepository repo;
 	private JSONUtil util;
-
+	
 	@Before
 	public void setup() {
 		util = new JSONUtil();

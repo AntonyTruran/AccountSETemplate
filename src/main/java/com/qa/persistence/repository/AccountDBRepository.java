@@ -79,4 +79,14 @@ public class AccountDBRepository implements AccountRepository {
 		return ((Collection<Account>) query.getResultList()).stream().filter(n -> n.getFirstName().equals(name)).collect(Collectors.toList()).size();
 	}
 
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
+
+	
+
 }
