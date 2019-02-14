@@ -1,5 +1,7 @@
 package com.qa.persistence.repository;
 
+import com.qa.persistence.domain.Account;
+
 public interface AccountRepository {
 
 	String getAllAccounts();
@@ -11,5 +13,9 @@ public interface AccountRepository {
 	String updateAccount(Long id, String account);
 	
 	int countByName(String name);
+
+	public String getAnAccount(Long id);
+
+	String getNAccountsAlphabetical(int num);
 
 }

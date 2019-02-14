@@ -52,5 +52,14 @@ public class AccountServiceImpl implements AccountService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public String getAnAccount(Long id) {
+		return repo.getAnAccount(id);
+	}
+
+	@Override
+	public String getNAccountsAlphabetical(int num) {
+		return repo.getNAccountsAlphabetical(num);
+	}
 
 }

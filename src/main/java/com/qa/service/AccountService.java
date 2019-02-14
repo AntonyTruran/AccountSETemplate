@@ -11,4 +11,8 @@ public interface AccountService {
 	String updateAccount(Long id, String account);
 	
 	int countByName(String name);
+
+	public String getAnAccount(Long id);
+
+	String getNAccountsAlphabetical(int num);
 }

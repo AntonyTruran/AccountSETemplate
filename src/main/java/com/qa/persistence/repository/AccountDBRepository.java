@@ -27,6 +27,7 @@ public class AccountDBRepository implements AccountRepository {
 	@Inject
 	private JSONUtil util;
 
+	@Override
 	public String getNAccountsAlphabetical(int num) {
 		Query query = manager.createQuery("SELECT a FROM Account a ORDER BY a.firstName").setMaxResults(num);
 		return util.getJSONForObject(query.getResultList());
@@ -46,6 +47,7 @@ public class AccountDBRepository implements AccountRepository {
 		return "{\"message\": \"account has been sucessfully added\"}";
 	}
 
+	@Override
 	public String getAnAccount(Long id) {
 		return util.getJSONForObject(manager.find(Account.class, id));
 	}

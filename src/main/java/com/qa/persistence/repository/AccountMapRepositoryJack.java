@@ -52,4 +52,16 @@ public class AccountMapRepositoryJack implements AccountRepository {
 	public int countByName(String name) {
 		return accountMap.values().stream().filter(n -> n.getFirstName().equals(name)).collect(Collectors.toList()).size();
 	}
+
+	@Override
+	public String getAnAccount(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getNAccountsAlphabetical(int num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
