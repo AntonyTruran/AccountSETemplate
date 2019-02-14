@@ -41,7 +41,7 @@ public class AccountEndpoint {
 	}
 
 	@Path("/updateAccount/{id}")
-	@POST
+	@PUT
 	@Produces({ "application/json" })
 	public String updateAccount(@PathParam("id") Long id, String account) {
 		return service.updateAccount(id, account);
@@ -54,10 +54,10 @@ public class AccountEndpoint {
 		return service.countByName(name);
 	}
 
-	@Path("/getNAccountsAlphabetical")
+	@Path("/getNAccountsAlphabetical/{num}")
 	@GET
 	@Produces({ "application/json" })
-	public String getNAccountsAlphabetical(int num) {
+	public String getNAccountsAlphabetical(@PathParam("num") int num) {
 		return service.getNAccountsAlphabetical(num);
 	}
 

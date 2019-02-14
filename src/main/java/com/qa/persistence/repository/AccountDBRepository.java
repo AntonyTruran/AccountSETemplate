@@ -69,9 +69,12 @@ public class AccountDBRepository implements AccountRepository {
 	@Override
 	@Transactional(REQUIRED)
 	public String updateAccount(Long id, String account) {
-		Account anAccount = util.getObjectForJSON(account, Account.class);
-		if (manager.contains(manager.find(Account.class, id)) && anAccount.getId() != null) {
-			manager.merge(anAccount);
+		Account updates = util.getObjectForJSON(account, Account.class);
+		if (manager.contains(manager.find(Account.class, id))) {
+			Account toUpdate = manager.find(Account.class, id);
+			if (updates.getAccountNumber() != null) {toUpdate.setAccountNumber(updates.getAccountNumber());}
+			if (updates.getFirstName() != null) {toUpdate.setFirstName(updates.getFirstName());}
+			if (updates.getLastName() != null) {toUpdate.setLastName(updates.getLastName());}
 			return "{\"message\": \"account has been sucessfully updated\"}";
 		}
 		return "{\"message\": \"no such account or you have not specified an account ID to update\"}";
