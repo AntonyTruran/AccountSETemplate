@@ -13,6 +13,7 @@ import com.qa.persistence.domain.Account;
 import com.qa.service.AccountService;
 import com.qa.util.JSONUtil;
 
+@Path("/Account")
 public class AccountsEndpoint {
 	@Inject
 	private AccountService service;

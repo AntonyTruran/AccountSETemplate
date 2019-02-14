@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.enterprise.inject.Alternative;
+
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtilJack;
 
+@Alternative
 public class AccountMapRepositoryJack implements AccountRepository {
 
 	Map<Long, Account> accountMap = new HashMap<Long, Account>();

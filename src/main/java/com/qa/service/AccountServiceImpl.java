@@ -23,13 +23,13 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public String createAccount(String account) {
 		Account newAccount = util.getObjectForJSON(account, Account.class);
-		if (newAccount.getAccountNumber().equals(9L)) {
+		if (newAccount.getAccountNumber().equals("9")) {
 			return"{\"message\":\"this account is blocked\"}";
 		}
 //		List<Account> current = repo.getAllAccounts(); 
 		// loop through all accounts to compare .getAccountNumber() to the account number
 		//inputed to check that it is unique 
-		return null;
+		return repo.createAccount(account);
 	}
 
 	@Override
