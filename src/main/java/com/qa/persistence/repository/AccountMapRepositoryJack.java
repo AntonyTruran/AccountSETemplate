@@ -22,6 +22,7 @@ public class AccountMapRepositoryJack implements AccountRepository {
 	private JSONUtilJack util = new JSONUtilJack();
 
 	public String getAllAccounts() {
+		
 		return util.getJSONJackForObject(accountMap.values());
 	}
 
