@@ -51,4 +51,8 @@ public class AccountServiceImpl implements AccountService {
 	public String getAnAccount(Long id) {
 		return repo.getAnAccount(id);
 	}
+
+	public void setRepo(AccountRepository repo) {
+		this.repo = repo;
+	}
 }

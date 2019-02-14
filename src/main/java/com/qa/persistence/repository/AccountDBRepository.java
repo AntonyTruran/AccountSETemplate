@@ -27,9 +27,9 @@ public class AccountDBRepository implements AccountRepository {
 	@Inject
 	private JSONUtil util;
 
-	public Long getKey(String accountNumber) {
-		return ((Account) manager.createQuery("SELECT a FROM Account a WHERE a.accountNumber = :accountNumber")).getId();
-	}
+//	public Long getKey(String accountNumber) {
+//		return ((Account) manager.createQuery("SELECT a FROM Account a WHERE a.accountNumber = :accountNumber")).getId();
+//	}
 
 	@Override
 	public String getNAccountsAlphabetical(int num) {
@@ -77,7 +77,7 @@ public class AccountDBRepository implements AccountRepository {
 			if (updates.getLastName() != null) {toUpdate.setLastName(updates.getLastName());}
 			return "{\"message\": \"account has been sucessfully updated\"}";
 		}
-		return "{\"message\": \"no such account or you have not specified an account ID to update\"}";
+		return "{\"message\": \"no such account\"}";
 	}
 
 	@Override

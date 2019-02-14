@@ -1,4 +1,4 @@
-package com.qa.MapTests;
+package com.qa.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

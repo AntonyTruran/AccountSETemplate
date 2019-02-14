@@ -1,4 +1,4 @@
-package com.qa.MapTests;
+package com.qa.test;
 
 import static org.junit.Assert.*;
 
@@ -92,5 +92,4 @@ public class AccountServiceTest {
 	public void getCountForFirstNamesInAccountWhenTwo() {
 		assertEquals(2, repo.countByName("Ella"));
 	}
-
 }

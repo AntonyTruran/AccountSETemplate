@@ -66,6 +66,10 @@ public class AccountEndpoint {
 	@Produces({ "application/json" })
 	public String getAnAccount(@PathParam("id") Long id) {
 		return service.getAnAccount(id);
+	}
+
+	public void setService(AccountService service) {
+		this.service = service;
 	}	
 	
 
