@@ -79,4 +79,10 @@ public class AccountTestService {
 		Mockito.when(repo.getNAccountsAlphabetical(1)).thenReturn(MOCK_VALUE);
 		assertEquals(MOCK_VALUE, service.getNAccountsAlphabetical(1));
 	}
+	
+	@Test
+	public void testUpdateAccount() {
+		Mockito.when(repo.updateAccount(1L, "Tony")).thenReturn(MOCK_VALUE);
+		assertEquals(MOCK_VALUE, service.updateAccount(1L, "Tony"));
+	}
 }

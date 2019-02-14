@@ -62,8 +62,14 @@ public class AccountTestEndpoint {
 	}
 	
 	@Test
-	public void testgetNAccountsAlphabetical() {
+	public void testGetNAccountsAlphabetical() {
 		Mockito.when(service.getNAccountsAlphabetical(1)).thenReturn(MOCK_VALUE);
 		assertEquals(MOCK_VALUE, endpoint.getNAccountsAlphabetical(1));
+	}
+	
+	@Test
+	public void testUpdateAccount() {
+		Mockito.when(service.updateAccount(1L, "Tony")).thenReturn(MOCK_VALUE);
+		assertEquals(MOCK_VALUE, endpoint.updateAccount(1L, "Tony"));
 	}
 }
